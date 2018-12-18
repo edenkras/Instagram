@@ -1,0 +1,134 @@
+$size: 400px;
+$animTime: 5s;
+	
+.box {
+	width: $size;
+	height: $size;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -$size/2;
+	border-radius: 20%;
+	overflow: hidden;
+	animation: animateBox $animTime ease-in-out infinite normal;
+	&::before {
+		content: '';
+		height: $size*4;
+		width: 100%;
+		position: absolute;
+		background: linear-gradient(135deg, #156de0, #bd1ce6, #c40726, #cfb20d);
+		animation: animateBG $animTime linear infinite alternate;
+	}
+	& > div {
+		position: relative;
+		border: white $size/22 solid;
+		box-sizing: border-box;
+	}
+	& .border {
+		border-radius: 20%;
+		width: $size*3/4;
+		height: $size*3/4;
+		top: 25%;
+		left: 25%;
+		margin: -$size/8;
+		animation: animateBorder $animTime ease-in-out infinite normal;
+	}
+	& .circle {
+		border-radius: 10em;
+		width: $size/2;
+		height: $size/2;
+		top: -25%;
+		left: 25%;
+		animation: animateCircle $animTime ease-in-out infinite normal;
+	}
+	& .dot {
+		border-radius: 10em;
+		width: $size/12;
+		height: $size/12;
+		top: -79%;
+		left: 69%;
+		animation: animateDot $animTime ease-in-out infinite normal;
+	}
+}
+
+@keyframes animateBG {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: -$size*3;
+	}
+}
+
+@keyframes animateBox {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+		border-radius: 50%;
+	}
+	2.5%, 95% {
+		transform: scale(1.3);
+		opacity: 1;
+		border-radius: 50%;
+	}
+	15%, 85% {
+		transform: scale(1);
+		border-radius: 20%;
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
+@keyframes animateBorder {
+	0% {
+		transform: scale(0);
+		border-radius: 50%;
+	}
+	2.5%, 95% {
+		transform: scale(1.3);
+		border-radius: 50%;
+	}
+	15%, 85% {
+		transform: scale(1);
+		border-radius: 20%;
+	}
+	43%, 65% {
+		border-radius: 20%;
+	}
+	48%, 60% {
+		border-radius: 50%;
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
+@keyframes animateCircle {
+	0%, 100% {
+		transform: scale(0);
+	}
+	2.5%, 95% {
+		transform: scale(1.3);
+	}
+	15%, 85% {
+		transform: scale(1);
+	}
+	50%, 52%, 56% {
+		transform: scale(1);
+		background-color: transparent;
+	}
+	51%, 55% {
+		transform: scale(1.1);
+		background-color: white;
+	}
+}
+
+@keyframes animateDot {
+	20%, 40%, 70%, 85% {
+		opacity: 1;
+	}
+	0%, 15%, 45%, 65%, 90%, 100% {
+		opacity: 0;
+	}
+}
